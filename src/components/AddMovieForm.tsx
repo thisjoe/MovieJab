@@ -19,14 +19,19 @@ const AddMovieForm: React.FC = () => {
             },
             body: JSON.stringify(newMovie),
         })
-        .then(response => response.text())
-        .then(data => {
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.text();
+            })
+            .then(data => {
             console.log('Success:', data);
             setNextId(nextId + 1);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
+            })
+            .catch((error) => {
+            console.error('Error:', error.message);
+            });
     };
 
     return (

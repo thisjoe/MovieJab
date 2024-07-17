@@ -1,0 +1,21 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "3050:3050"
+    volumes:
+      - ./server/data:/app/data
+    environment:
+      - mongodb://db:27017/moviejab-server
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    ports:
+      - "80:80"
+  db:
+    image: mongo
+    volumes:
+      - ./data:/data/db

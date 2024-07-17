@@ -11,10 +11,12 @@ const App: React.FC = () => {
       </header>
       <main>
         <AddMovieForm />
-        <MovieList />
+        {/* Remove or comment out the line below */}
+        {/* <MovieList /> */}
       </main>
     </div>
   );
-}
+};
+
 
 export default App;
