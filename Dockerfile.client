@@ -1,12 +1,10 @@
-FROM node:14 as build
+FROM node:16.20.0 as build
 WORKDIR /app
 COPY package*.json ./
+RUN node --version && npm --version
 RUN npm install
 COPY . .
-RUN npm run build
-COPY server .
-EXPOSE 3001
-CMD ["node", "server.js"]
+RUN npx react-scripts build
 
 FROM nginx:alpine
 COPY --from=build /app/build /usr/share/nginx/html

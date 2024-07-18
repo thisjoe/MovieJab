@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 
 const app = express();
-const PORT = 3050;
+const PORT = process.env.PORT || 3001;
 const MONGO_URL = 'mongodb://db:27017/moviedb';
 const cors = require('cors');
 app.use(cors());

@@ -1,7 +1,8 @@
-FROM node:16
+FROM node:16-alpine
 WORKDIR /app
 COPY package*.json ./
+RUN apk add --no-cache python3 make g++
 RUN npm install
-COPY server/server.js .
+COPY . .
 EXPOSE 3001
-CMD ["node", "server.js"]
+CMD ["node", "./server/server.js"]

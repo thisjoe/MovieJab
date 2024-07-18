@@ -4,11 +4,12 @@ services:
       context: .
       dockerfile: Dockerfile.server
     ports:
-      - "3050:3050"
+      - "3001:3001"
     volumes:
       - ./server/data:/app/data
     environment:
       - mongodb://db:27017/moviejab-server
+      - PORT=3001
   client:
     build:
       context: .
